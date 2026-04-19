@@ -92,3 +92,22 @@ async function runQuiz(): Promise<void> {
 
     await sleep(500);
   }
+  // --- Summary ---
+    const score = results.filter((r) => r.correct).length;
+    const total = questions.length;
+    const percent = Math.round((score / total) * 100);
+
+    console.log("\n=============================");
+    console.log(`🏁 Quiz Complete! Score: ${score}/${total} (${percent}%)`);
+
+    if (percent === 100) console.log("🏆 Perfect score! You're a TypeScript pro!");
+    else if (percent >= 60) console.log("👍 Good job! Keep learning!");
+    else console.log("📚 Keep practicing, you'll get there!");
+
+    console.log("=============================\n");
+
+    rl.close();
+  }
+
+  // --- Run ---
+  runQuiz();
